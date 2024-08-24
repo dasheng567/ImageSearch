@@ -17,6 +17,9 @@
 		F595F1572C7A3FA800BA5FA3 /* ImageSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F595F1562C7A3FA800BA5FA3 /* ImageSearchView.swift */; };
 		F595F1612C7A464100BA5FA3 /* ImageSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F595F1602C7A464100BA5FA3 /* ImageSearchDataModel.swift */; };
 		F595F1642C7A465B00BA5FA3 /* ImageSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F595F1632C7A465B00BA5FA3 /* ImageSearchViewModel.swift */; };
+		F595F1662C7A4EA900BA5FA3 /* ImageDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F595F1652C7A4EA900BA5FA3 /* ImageDetailsView.swift */; };
+		F595F16A2C7A580200BA5FA3 /* ImageWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F595F1692C7A580200BA5FA3 /* ImageWebView.swift */; };
+		F595F16C2C7A5A3300BA5FA3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F595F16B2C7A5A3300BA5FA3 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		F595F1562C7A3FA800BA5FA3 /* ImageSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchView.swift; sourceTree = "<group>"; };
 		F595F1602C7A464100BA5FA3 /* ImageSearchDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchDataModel.swift; sourceTree = "<group>"; };
 		F595F1632C7A465B00BA5FA3 /* ImageSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchViewModel.swift; sourceTree = "<group>"; };
+		F595F1652C7A4EA900BA5FA3 /* ImageDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsView.swift; sourceTree = "<group>"; };
+		F595F1692C7A580200BA5FA3 /* ImageWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWebView.swift; sourceTree = "<group>"; };
+		F595F16B2C7A5A3300BA5FA3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,7 @@
 				F595F1582C7A3FE000BA5FA3 /* Views */,
 				F595F1622C7A465B00BA5FA3 /* ViewModels */,
 				F595F15F2C7A464100BA5FA3 /* DataModels */,
+				F595F16B2C7A5A3300BA5FA3 /* Constants.swift */,
 				F595F1302C7A3F2700BA5FA3 /* Assets.xcassets */,
 				F595F1322C7A3F2700BA5FA3 /* Preview Content */,
 			);
@@ -140,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				F595F1562C7A3FA800BA5FA3 /* ImageSearchView.swift */,
+				F595F1652C7A4EA900BA5FA3 /* ImageDetailsView.swift */,
+				F595F1692C7A580200BA5FA3 /* ImageWebView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,10 +300,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F595F12F2C7A3F2600BA5FA3 /* ContentView.swift in Sources */,
+				F595F16A2C7A580200BA5FA3 /* ImageWebView.swift in Sources */,
+				F595F1662C7A4EA900BA5FA3 /* ImageDetailsView.swift in Sources */,
 				F595F1612C7A464100BA5FA3 /* ImageSearchDataModel.swift in Sources */,
 				F595F12D2C7A3F2600BA5FA3 /* ImageSearchApp.swift in Sources */,
 				F595F1572C7A3FA800BA5FA3 /* ImageSearchView.swift in Sources */,
 				F595F1642C7A465B00BA5FA3 /* ImageSearchViewModel.swift in Sources */,
+				F595F16C2C7A5A3300BA5FA3 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

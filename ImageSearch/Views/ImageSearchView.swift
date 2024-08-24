@@ -5,42 +5,55 @@
 import SwiftUI
 
 struct ImageSearchView: View {
+    // Adding observable properties
     @StateObject private var viewModel = ImageSearchViewModel()
     @State private var searchText = ""
 
+    // Setup three columns for the grid view
     private let gridItems = [GridItem(.flexible()),
                              GridItem(.flexible()),
                              GridItem(.flexible())]
 
     var body: some View {
         NavigationStack {
-            Text("Here are the recent uploads from Flickr taged \(searchText)")
+            // Add introduction label
+            Text(Constants.ImageSearch.uploadsSearched + searchText)
                 .onChange(of: searchText) { newValue in
                     viewModel.getImageData(from: newValue)
                 }
-                .navigationTitle("Images Search")
+                .navigationTitle(Constants.ImageSearch.imagesSearch)
+
+            // Optional binding to safely display images
             if let images = viewModel.images {
+                // Make screen scrollable
                 ScrollView {
+                    // Inform user no data found
                     if images.isEmpty && !searchText.isEmpty {
-                        Text("No Search Found")
+                        Text(Constants.ImageSearch.noResultFound)
                             .bold()
                             .frame(alignment: .center)
                             .padding()
                     }
+                    // Add grid view to display images
                     LazyVGrid(columns: gridItems) {
                         ForEach(images, id: \.self) { imageData in
-                            AsyncImage(url: URL(string: imageData.imageURL)) { image in
-                                image.resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            } placeholder: {
-                                ProgressView()
+                            // Add navigation to the images
+                            NavigationLink(destination: ImageDetailsView(detailsModel: imageData.imageDetails)) {
+                                // Dislay image
+                                AsyncImage(url: URL(string: imageData.imageURL)) { image in
+                                    image.resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                } placeholder: {
+                                    ProgressView()          // Add progress indicator
+                                }
                             }
                         }
                         .padding()
                     }
                 }
             } else {
-                Text("There's something wrong with the services, please try again later.")
+                // Display error information when services are down
+                Text(Constants.ImageSearch.sevicesDown)
                     .bold()
                     .padding()
             }
