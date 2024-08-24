@@ -1,21 +1,12 @@
 //
-//  ContentView.swift
-//  ImageSearch
-//
-//  Created by Chen Big on 8/24/24.
+//  Created by Chen on 8/24/24.
 //
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        ImageSearchView()
     }
 }
 
