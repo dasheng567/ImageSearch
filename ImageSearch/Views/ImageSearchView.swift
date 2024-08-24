@@ -5,6 +5,7 @@
 import SwiftUI
 
 struct ImageSearchView: View {
+    @StateObject private var viewModel = ImageSearchViewModel()
     @State private var searchText = ""
 
     private let gridItems = [GridItem(.flexible()),
@@ -13,18 +14,35 @@ struct ImageSearchView: View {
 
     var body: some View {
         NavigationStack {
-            Text("Here are the recent uploads taged \(searchText)")
+            Text("Here are the recent uploads from Flickr taged \(searchText)")
+                .onChange(of: searchText) { newValue in
+                    viewModel.getImageData(from: newValue)
+                }
                 .navigationTitle("Images Search")
-            LazyVGrid(columns: gridItems) {
-                ForEach(["A", "B", "C"], id: \.self) { _ in
-                    AsyncImage(url: URL(string: "https://live.staticflickr.com/65535/53944142466_90ea132ed5_m.jpg")) { image in
-                        image.resizable()
-                            .aspectRatio(contentMode: .fit)
-                    } placeholder: {
-                        ProgressView()
+            if let images = viewModel.images {
+                ScrollView {
+                    if images.isEmpty && !searchText.isEmpty {
+                        Text("No Search Found")
+                            .bold()
+                            .frame(alignment: .center)
+                            .padding()
+                    }
+                    LazyVGrid(columns: gridItems) {
+                        ForEach(images, id: \.self) { imageData in
+                            AsyncImage(url: URL(string: imageData.imageURL)) { image in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            } placeholder: {
+                                ProgressView()
+                            }
+                        }
+                        .padding()
                     }
                 }
-                .padding()
+            } else {
+                Text("There's something wrong with the services, please try again later.")
+                    .bold()
+                    .padding()
             }
         }
         .searchable(text: $searchText)
